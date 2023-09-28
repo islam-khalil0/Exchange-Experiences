@@ -6,10 +6,10 @@ import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// export const metadata = {
-//   title: "Exchange experiences",
-//   description: "application for exchanging experiences",
-// };
+export const metadata = {
+  title: "Exchange experiences",
+  description: "application for exchanging experiences",
+};
 
 export default function RootLayout({ children }) {
   return (
