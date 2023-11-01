@@ -6,11 +6,12 @@ import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
 import Styles from "../page.module.css";
 import Image from "next/image";
 import CardExp from "../components/CardExp";
+import { useTranslation } from "react-i18next";
 
 export default function favoritesPage() {
   const { user } = userAuth();
   const [listOfFavPosts, setListOfFavPosts] = useState([]);
-
+  const [t, i18n] = useTranslation();
 
   useEffect(() => {
     const unSub = onSnapshot(
@@ -25,8 +26,8 @@ export default function favoritesPage() {
 
   return (
     <main className={Styles.section}>
-      <p style={{ margin: "7rem 0 1rem 2rem", fontSize: "17px" }}>
-        your fav posts
+      <p style={{ margin: "7rem 2rem 1rem 2rem", fontSize: "17px" }}>
+        {t("Your favorite posts")}
       </p>
       <div className={Styles.container}>
         {listOfFavPosts ? (

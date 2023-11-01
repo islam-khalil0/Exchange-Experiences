@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import styles from "../page.module.css";
 import { useEffect, useState } from "react";
@@ -9,11 +10,13 @@ import { RiMailSendLine } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { userAuth } from "../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 export default function AddExperience() {
   const [experience, setExperience] = useState("");
   const [selectedCarer, setSelectedCarer] = useState("General Life");
   const { user } = userAuth();
+  const [t, i18n] = useTranslation();
 
   var today = new Date();
   var date =
@@ -59,7 +62,7 @@ export default function AddExperience() {
       <div className={styles.upBack}>
         <span className={styles.back}>
           <MdKeyboardBackspace />
-          <Link href="/">back to home</Link>
+          <Link href="/">{t("back to home")}</Link>
         </span>
       </div>
       <form
@@ -75,47 +78,50 @@ export default function AddExperience() {
           <span>
             <RiMailSendLine />
           </span>
-          <h4>Share your experiences</h4>
-          <p>
-            Share your best and put your post to shine on an experience sharing
-            site
-          </p>
+          <h4>{t("Share your experiences")}</h4>
+          <p>{t("Share your best")}</p>
         </span>
         <div className={styles.inputs}>
           <textarea
             required
-            placeholder="your experience"
+            placeholder={t("Your experiences")}
             rows="4"
             cols="120"
             value={experience}
             onChange={(e) => setExperience(e.target.value)}
           ></textarea>
           <label style={{ fontSize: "14px" }}>
-            chose the category:{" "}
+            {t("choose the category")}:{" "}
             <select
               required
               value={selectedCarer} // ...force the select's value to match the state variable...
               onChange={(e) => setSelectedCarer(e.target.value)} // ... and update the state variable on any change!
             >
-              <option value="General Life" selected>
-                General Life
+              <option value="General Life">{t("General Life")}</option>
+              <option value="The medical field">
+                {t("The medical field")}
               </option>
-              <option value="The medical field">The medical field</option>
-              <option value="engineering field">engineering field</option>
-              <option value="technological field">technological field</option>
-              <option value="design field">design field</option>
-              <option value="Business field">Business field</option>
-              <option value="teaching filed">teaching filed</option>
-              <option value="professions field">professions field</option>
+              <option value="engineering field">
+                {t("engineering field")}
+              </option>
+              <option value="technological field">
+                {t("technological field")}
+              </option>
+              <option value="design field">{t("design field")}</option>
+              <option value="Business field">{t("Business field")}</option>
+              <option value="teaching filed">{t("teaching field")}</option>
+              <option value="professions field">
+                {t("professions field")}
+              </option>
               <option value="E-marketing and sales field">
-                E-marketing and sales field
+                {t("E-marketing and sales field")}
               </option>
-              <option value="another field">another field</option>
+              <option value="another field">{t("another field")}</option>
             </select>
           </label>
         </div>
         <div className={styles.btn}>
-          <button onSubmit> Deploy </button>
+          <button onSubmit> {t("Deploy")} </button>
         </div>
       </form>
       <ToastContainer

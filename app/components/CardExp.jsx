@@ -15,6 +15,7 @@ import { userAuth } from "../context/AuthContext";
 import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from "react-i18next";
 
 const CardExp = ({
   id,
@@ -29,7 +30,7 @@ const CardExp = ({
     [likeCount, setLikeCount] = useState([]);
   const { user, listOfExperience } = userAuth();
   const image = photo ? photo : "";
-
+  const [t, i18n] = useTranslation();
 
   useEffect(() => {
     const unSub = onSnapshot(
@@ -113,6 +114,7 @@ const CardExp = ({
               >{`${date} ${time}`}</p>
             </div>
           </div>
+
           <p className={Style.text}>{experience}</p>
         </div>
         <div
@@ -124,7 +126,7 @@ const CardExp = ({
           }}
         >
           <p style={{ color: "#f42c04" }}>
-            <span style={{ color: "#000000b3" }}>category:</span>{" "}
+            <span style={{ color: "#000000b3" }}>{t("category")} :</span>{" "}
             {selectedCarer}
           </p>
         </div>

@@ -66,10 +66,30 @@
   display: none;
 }
 
+.navbar .dropDown_menu_ar {
+  position: absolute;
+  display: none;
+}
+
 .navbar .exp span:hover .dropDown_menu {
   display: block;
   position: absolute;
-  right: 10px;
+  right: 0;
+  background: #121212;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  height: max-content;
+  width: max-content;
+}
+
+.navbar .exp span:hover .dropDown_menu_ar {
+  display: block;
+  position: absolute;
+  left: 0;
   background: #121212;
   padding: 2rem 1rem;
   display: flex;
@@ -90,6 +110,15 @@
   gap: 1rem;
 }
 
+.navbar .dropDown_menu_ar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .navbar .dropDown_menu ul li {
   font-size: 14px;
   color: white;
@@ -100,7 +129,21 @@
   cursor: pointer;
 }
 
+.navbar .dropDown_menu_ar ul li {
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
 .navbar .dropDown_menu ul li:hover {
+  color: #e22803;
+}
+
+.navbar .dropDown_menu_ar ul li:hover {
   color: #e22803;
 }
 
@@ -188,6 +231,7 @@
 .card .top .text {
   line-height: 30px;
   min-height: 14rem;
+  text-align: center;
 }
 
 .card .top .username {
@@ -231,7 +275,7 @@
   justify-content: start;
   align-items: center;
   width: 100%;
-  padding: 2rem 0 0 2rem;
+  padding: 2rem 2rem 0 2rem;
 }
 
 .main .back {

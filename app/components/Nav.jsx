@@ -9,11 +9,15 @@ import { VscAccount } from "react-icons/vsc";
 import { userAuth } from "@/app/context/AuthContext";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import logo from "../../public/logo.png";
+import { useTranslation } from "react-i18next";
+import { BiLogoAudible } from "react-icons/bi";
 
 const Nav = () => {
   const { user, googleSignIn, logOut } = userAuth();
   const [loading, setLoading] = useState(true);
   const image = user ? user.photoURL : "";
+  const [t, i18n] = useTranslation();
 
   const handleSignIn = async () => {
     try {
@@ -34,7 +38,7 @@ const Nav = () => {
   useEffect(() => {
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 500));
-      setLoading(false);  
+      setLoading(false);
     };
     checkAuthentication();
   }, [user]);
@@ -43,8 +47,10 @@ const Nav = () => {
     <div className={Style.navbar}>
       <div className={Style.logo}>
         <Link className={Style.logo} href="/">
-          <GiMeshNetwork />
-          <h3>Exchange of experiences</h3>
+          {/* <GiMeshNetwork /> */}
+          <BiLogoAudible style={{ fontSize: "4rem" }} />
+          {/* <Image src={logo} width={65} /> */}
+          <h3>{t("Exchange experiences")}</h3>
         </Link>
       </div>
 
@@ -57,11 +63,14 @@ const Nav = () => {
           </div>
         ) : user ? (
           <>
-            <button onClick={handleSignOut} style={{ cursor: "pointer" }}>
-              LogOut
-            </button>
+            {i18n.language == "en" && (
+              <button onClick={() => i18n.changeLanguage("ar")}>العربية</button>
+            )}
+            {i18n.language == "ar" && (
+              <button onClick={() => i18n.changeLanguage("en")}>english</button>
+            )}
             <button>
-              <Link href="/addExperience"> Experience</Link>
+              <Link href="/addExperience">{t("experience")}</Link>
             </button>
 
             <span style={{ fontSize: "20px" }}>
@@ -74,7 +83,13 @@ const Nav = () => {
               />
               <BsArrowDownShort />
 
-              <div className={Style.dropDown_menu}>
+              <div
+                className={
+                  i18n.language == "en"
+                    ? Style.dropDown_menu
+                    : Style.dropDown_menu_ar
+                }
+              >
                 <ul>
                   <span
                     style={{
@@ -112,22 +127,42 @@ const Nav = () => {
                   </span>
                   <li>
                     <Link href="/favorites">
-                      <MdFavoriteBorder /> Favorites
+                      <MdFavoriteBorder /> {t("Favorites")}
                     </Link>
                   </li>
                   <li>
                     <Link href="/posts">
-                      <BsFillFileEarmarkPostFill /> My Posts
+                      <BsFillFileEarmarkPostFill /> {t("My Posts")}
                     </Link>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleSignOut}
+                      style={{
+                        cursor: "pointer",
+                        width: "6rem",
+                        marginTop: ".5rem",
+                      }}
+                    >
+                      {t("Logout")}
+                    </button>
                   </li>
                 </ul>
               </div>
             </span>
           </>
         ) : (
-          <button onClick={handleSignIn} style={{ cursor: "pointer" }}>
-            SignIn
-          </button>
+          <>
+            {i18n.language == "en" && (
+              <button onClick={() => i18n.changeLanguage("ar")}>العربية</button>
+            )}
+            {i18n.language == "ar" && (
+              <button onClick={() => i18n.changeLanguage("en")}>english</button>
+            )}
+            <button onClick={handleSignIn} style={{ cursor: "pointer" }}>
+              SignIn
+            </button>
+          </>
         )}
       </div>
     </div>
