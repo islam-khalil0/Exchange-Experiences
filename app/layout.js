@@ -1,11 +1,9 @@
-"use client";
-
 import Nav from "./components/Nav";
 import { AuthContextProvider } from "./context/AuthContext";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import "./i18n";
-import { useTranslation } from "react-i18next";
+// import "./i18n";
+// import { useTranslation } from "react-i18next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,9 +13,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const [t, i18n] = useTranslation();
+  // const [t, i18n] = useTranslation();
   return (
-    <html dir={i18n.language == "ar" ? "rtl" : "ltr"} lang="en">
+    // dir={i18n.language == "ar" ? "rtl" : "ltr"} lang="en"
+    <html >
       {/* <Head>
         <title>Exchange Experiences</title>
         <meta name="keyWords" content="Exchange Experiences App"></meta>
