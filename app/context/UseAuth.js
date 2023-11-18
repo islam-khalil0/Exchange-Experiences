@@ -1,17 +1,26 @@
-import { useState, useEffect } from 'react';
-import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider } from 'firebase/auth';
-import { auth } from '../firebase';
+import { useState, useEffect } from "react";
+import {
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { auth } from "../firebase";
 
 export const useAuth = () => {
   const [user, setUser] = useState(null);
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    signInWithPopup(auth, provider).catch((error) => {
+      console.error("Error signing in with Google:", error.message);
+    });
   };
 
   const logOut = () => {
-    signOut(auth);
+    signOut(auth).catch((error) => {
+      console.error("Error signing out:", error.message);
+    });
   };
 
   useEffect(() => {
