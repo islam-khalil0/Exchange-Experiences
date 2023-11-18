@@ -13,16 +13,22 @@ export default function favoritesPage() {
   const [listOfFavPosts, setListOfFavPosts] = useState([]);
   const [t, i18n] = useTranslation();
 
-  useEffect(() => {
-    const unSub = onSnapshot(
-      collection(db, "usersList", user?.uid, "listOfFavPosts"),
-      (snapshot) => setListOfFavPosts(snapshot.docs)
-    );
+  if (user && user.uid) {
+    const Uid = user.uid;
+    useEffect(() => {
+      const unSub = onSnapshot(
+        collection(db, "usersList", Uid, "listOfFavPosts"),
+        (snapshot) => setListOfFavPosts(snapshot.docs)
+      );
 
-    return () => {
-      unSub();
-    };
-  }, [user.uid]);
+      return () => {
+        unSub();
+      };
+    }, [Uid]);
+    // Rest of your code
+  } else {
+    console.log("error");
+  }
 
   return (
     <main className={Styles.section}>
