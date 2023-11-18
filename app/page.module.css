@@ -202,9 +202,9 @@
 }
 
 .card {
-  width: 40rem;
+  width: 95%;
   height: max-content;
-  min-height: 18rem;
+  min-width: 90%;
   padding: 1.5rem;
   border-radius: 1rem;
   background: white;
@@ -214,7 +214,8 @@
   gap: 0.8rem;
   -webkit-box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
   -moz-box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
-  box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
+  box-shadow: 1px 14px 25px -15px rgba(18, 18, 18, 0.56);
+  overflow: hidden;
 }
 
 .card .top {
@@ -229,6 +230,8 @@
 }
 
 .card .top .text {
+  word-wrap: break-word;
+  word-break: keep-all;
   line-height: 30px;
   min-height: 14rem;
   text-align: center;
@@ -260,40 +263,19 @@
 /* add experience page */
 
 .main {
-  margin-top: 5rem;
-  width: 100%;
-  height: max-content;
   display: flex;
   align-items: center;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-}
-
-.main .upBack {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  width: 100%;
-  padding: 2rem 2rem 0 2rem;
-}
-
-.main .back {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 17px;
-  width: 8.5rem;
-}
-
-.main .back:hover {
-  color: #f42c04;
+  box-shadow: none;
+  border-radius: 15px;
+  background: white;
+  height: 30rem;
+  position: relative;
 }
 
 .main form {
-  background: #fff;
-  width: 50%;
-  height: 70vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -304,6 +286,18 @@
   border-radius: 1rem;
   padding: 2rem;
   overflow: hidden;
+  background: transparent;
+}
+
+.main .closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #f42c04;
+  font-size: 22px;
+  cursor: pointer;
 }
 
 .main form span {
@@ -366,8 +360,8 @@
   border: none;
   outline: none;
   padding: 0.4rem;
-  max-width: 25rem;
-  min-width: 15rem;
+  max-width: 20rem;
+  min-width: 10rem;
   max-height: 8rem;
   min-height: 5rem;
   font-size: 13px;
@@ -451,22 +445,30 @@
   }
 }
 
-@media screen and (max-width: 1520px) {
-  .main form {
-    background: #fff;
-    width: 60%;
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    -webkit-box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
-    -moz-box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
-    box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
-    border-radius: 1rem;
-    padding: 2rem;
-    overflow: hidden;
-  }
+.center {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.form {
+  width: 80%;
+  padding: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid #121212;
+  border-radius: 50px;
+  background: #fff;
+  color: transparent;
+}
+
+.center .imageUser {
+  border-radius: 50px;
 }
 
 @media screen and (max-width: 1450px) {
@@ -474,67 +476,19 @@
     gap: 2rem;
     padding: 1rem 3rem;
   }
-  .card {
-    width: 30rem;
-  }
 }
 
 @media screen and (max-width: 1127px) {
   .container {
     padding: 1rem 2rem;
   }
-  .card {
-    width: 28rem;
-  }
+
   .main form textarea {
-    background: #fff;
-    font-weight: 500;
-    color: #000;
-    box-shadow: 0 0 0.4vw rgba(0, 0, 0, 0.5), 0 0 0 0.15vw transparent;
-    border-radius: 0.5rem;
-    border: none;
-    outline: none;
     padding: 0.4rem;
     max-width: 18rem;
-    min-width: 5rem;
+    min-width: 10rem;
     max-height: 5rem;
     min-height: 5rem;
-  }
-}
-
-@media screen and (max-width: 1008px) {
-  .main form {
-    background: #fff;
-    width: 70%;
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    -webkit-box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
-    -moz-box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
-    box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
-    border-radius: 1rem;
-    padding: 2rem;
-    overflow: hidden;
-  }
-  .main form textarea {
-    background: #fff;
-    font-weight: 500;
-    color: #000;
-    box-shadow: 0 0 0.4vw rgba(0, 0, 0, 0.5), 0 0 0 0.15vw transparent;
-    border-radius: 0.5rem;
-    border: none;
-    outline: none;
-    padding: 0.4rem;
-    max-width: 18rem;
-    min-width: 5rem;
-    max-height: 5rem;
-    min-height: 5rem;
-  }
-
-  .main form .inputs {
-    width: 90%;
   }
 }
 
@@ -544,8 +498,14 @@
     gap: 1.5rem;
     padding: 1rem;
   }
-  .card {
-    width: 95%;
+
+  .main form textarea {
+    padding: 0.4rem;
+    max-width: 12rem;
+  }
+
+  .main form select {
+    width: 10rem;
   }
 }
 
@@ -578,65 +538,21 @@
   }
 }
 
-@media screen and (max-width: 634px) {
-  .main form {
-    background: #fff;
-    width: 90%;
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    -webkit-box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
-    -moz-box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
-    box-shadow: 1px 14px 43px -23px rgba(18, 18, 18, 0.56);
-    border-radius: 1rem;
-    padding: 2rem;
-    overflow: hidden;
+@media screen and (max-width: 460px) {
+  .container {
+    padding: 1rem 0;
   }
-  .main form textarea {
-    background: #fff;
-    font-weight: 500;
-    color: #000;
-    box-shadow: 0 0 0.4vw rgba(0, 0, 0, 0.5), 0 0 0 0.15vw transparent;
-    border-radius: 0.5rem;
-    border: none;
-    outline: none;
-    padding: 0.4rem;
-    max-width: 19rem;
-    min-width: 10rem;
-    max-height: 8rem;
-    min-height: 5rem;
-  }
-
-  .main form .inputs {
+  .card {
     width: 90%;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .card {
-    width: 98%;
-    height: max-content;
-  }
-
   .navbar .exp button {
     width: max-content;
     font-size: 8px;
   }
-  .main form textarea {
-    padding: 0.4rem;
-    max-width: 10rem;
-    min-width: 5rem;
-    max-height: 4rem;
-    min-height: 2rem;
-  }
+
   .navbar .logo {
     width: max-content;
     display: flex;
@@ -651,22 +567,5 @@
     font-weight: bold;
     width: 85px;
     color: #fff;
-  }
-  .main form span h4 {
-    font-size: 13px;
-  }
-
-  .main form span p {
-    font-size: 10px;
-    width: 13rem;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.701);
-  }
-  .main form select {
-    background: #fff;
-    color: black;
-    padding: 0 2rem;
-    border-radius: 0.2rem;
-    width: 10rem;
   }
 }

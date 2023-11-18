@@ -1,18 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import styles from "../page.module.css";
+import styles from "../../page.module.css";
 import { useEffect, useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../../firebase";
 import { MdKeyboardBackspace } from "react-icons/md";
 import { RiMailSendLine } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { userAuth } from "../context/AuthContext";
+import { userAuth } from "../../context/AuthContext";
 import { useTranslation } from "react-i18next";
+import { IoMdClose } from "react-icons/io";
 
-export default function AddExperience() {
+export default function AddExperience({ handleClose }) {
   const [experience, setExperience] = useState("");
   const [selectedCarer, setSelectedCarer] = useState("General Life");
   const { user } = userAuth();
@@ -59,12 +60,9 @@ export default function AddExperience() {
 
   return (
     <main className={styles.main}>
-      <div className={styles.upBack}>
-        <span className={styles.back}>
-          <MdKeyboardBackspace />
-          <Link href="/">{t("back to home")}</Link>
-        </span>
-      </div>
+      <button onClick={handleClose} className={styles.closeBtn}>
+        <IoMdClose />
+      </button>
       <form
         onSubmit={handleSubmit}
         style={{

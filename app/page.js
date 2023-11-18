@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import CardExp from "./components/CardExp";
 import { userAuth } from "./context/AuthContext";
 import { useTranslation } from "react-i18next";
+import Popup from "./components/Popup/popup";
+import AddEx from "./components/AddExperience/page";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Home() {
   const [selectedCarer, setSelectedCarer] = useState("all");
@@ -13,6 +16,8 @@ export default function Home() {
   const [Loading, setLoading] = useState(true);
   const { user } = userAuth();
   const [t, i18n] = useTranslation();
+  const [showPopup, setShowPopup] = useState(false);
+  const image = user ? user.photoURL : "";
 
   useEffect(() => {
     const checkAuthentication = async () => {
@@ -22,8 +27,37 @@ export default function Home() {
     checkAuthentication();
   }, [user]);
 
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
   return (
     <main className={styles.section}>
+      <div className={styles.center}>
+        {user && (
+          <>
+            <Image
+              className={styles.imageUser}
+              src={image}
+              width="35"
+              height="35"
+              alt="Picture of your profile"
+            />
+
+            <form className={styles.form} onClick={togglePopup}>
+              <input
+                className={styles.input}
+                placeholder="Do you have something to share ?"
+                required
+                type="text"
+              />
+            </form>
+            <Popup show={showPopup} handleClose={togglePopup}>
+              <AddEx handleClose={togglePopup} />
+            </Popup>
+          </>
+        )}
+      </div>
       <div style={{ padding: "1.5rem 2rem 0 2rem" }}>
         <label style={{ fontSize: "18px" }}>
           {`${t("Filter by category")}: `}
