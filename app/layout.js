@@ -9,11 +9,6 @@ import { useTranslation } from "react-i18next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Exchange experiences",
-  description: "application for exchanging experiences",
-};
-
 export default function RootLayout({ children }) {
   const [t, i18n] = useTranslation();
   return (
