@@ -1,5 +1,3 @@
-"use client";
-
 import { createContext, useContext, useState, useEffect } from "react";
 import {
   signInWithPopup,
@@ -19,30 +17,14 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../firebase";
+import { useAuth } from "./UseAuth";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
   const [listOfExperience, setListOfExperience] = useState([]);
-  const [listOfFavoritesPosts, setListOfFavoritesPosts] = useState([]);
   const [listOfFavPosts, setListOfFavPosts] = useState([]);
-
-  const googleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
-  };
-
-  const logOut = () => {
-    signOut(auth);
-  };
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe();
-  }, [user]);
+  const { user, googleSignIn, logOut } = useAuth();
 
   useEffect(() => {
     const q = query(collection(db, "list of experience"));
