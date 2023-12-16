@@ -40,6 +40,9 @@ export default function AddExperience({ handleClose }) {
       });
       setExperience("");
       notify();
+      setTimeout(() => {
+        handleClose();
+      }, 5000);
     } catch (e) {
       console.log("Error adding document: ", e);
     }
@@ -122,18 +125,7 @@ export default function AddExperience({ handleClose }) {
           <button onSubmit> {t("Deploy")} </button>
         </div>
       </form>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+    
     </main>
   );
 }
