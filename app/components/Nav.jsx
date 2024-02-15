@@ -63,7 +63,7 @@ const Nav = () => {
           </div>
         ) : user ? (
           <>
-          {/* lang switch */}
+            {/* lang switch */}
             {/* {i18n.language == "en" && (
               <button onClick={() => i18n.changeLanguage("ar")}>العربية</button>
             )}
@@ -157,7 +157,10 @@ const Nav = () => {
             {i18n.language == "ar" && (
               <button onClick={() => i18n.changeLanguage("en")}>english</button>
             )} */}
-            <button onClick={handleSignIn} style={{ cursor: "pointer" }}>
+            <button
+              onClick={handleSignIn}
+              style={{ cursor: "pointer", color: "white" }}
+            >
               SignIn
             </button>
           </>
