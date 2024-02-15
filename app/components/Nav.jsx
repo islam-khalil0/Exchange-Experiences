@@ -50,7 +50,7 @@ const Nav = () => {
           {/* <GiMeshNetwork /> */}
           {/* <BiLogoAudible style={{ fontSize: "4rem" }} /> */}
           {/* <Image src={logo} width={65} /> */}
-          <Image src={logo} width={50} height={50} alt="logo"/>
+          <Image src={logo} width={50} height={50} alt="logo" />
           <h3>{t("Exchange experiences")}</h3>
         </Link>
       </div>
@@ -141,6 +141,7 @@ const Nav = () => {
                         cursor: "pointer",
                         width: "6rem",
                         marginTop: ".5rem",
+                        color: "white",
                       }}
                     >
                       {t("Logout")}
