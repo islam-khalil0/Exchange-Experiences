@@ -1,19 +1,31 @@
 import { GiMeshNetwork } from "react-icons/gi";
+import styles from "./page.module.css";
 
 export default function loadingPage() {
   return (
     <div
       style={{
-        width: "100%",
-        height: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        width: "100%",
+        height: "80vh",
       }}
     >
-      <span style={{ fontSize: "15rem", color: "#f42c04" }}>
-        <GiMeshNetwork />
-      </span>
+      <div className={styles.loader}>
+        <span
+          className={styles.bar}
+          style={{ height: "70px", width: "6px" }}
+        ></span>
+        <span
+          className={styles.bar}
+          style={{ height: "100px", width: "6px" }}
+        ></span>
+        <span
+          className={styles.bar}
+          style={{ height: "70px", width: "6px" }}
+        ></span>
+      </div>
     </div>
   );
 }

@@ -59,7 +59,7 @@ export default function Home() {
           </>
         )}
       </div>
-      <div style={{ padding: "1.5rem 2rem 0 2rem" }}>
+      <div style={{ padding: "1.5rem 2rem 0 2rem"}}>
         <label style={{ fontSize: "18px" }}>
           {`${t("Filter by category")}: `}
           <select

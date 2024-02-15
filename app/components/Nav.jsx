@@ -48,8 +48,9 @@ const Nav = () => {
       <div className={Style.logo}>
         <Link className={Style.logo} href="/">
           {/* <GiMeshNetwork /> */}
-          <BiLogoAudible style={{ fontSize: "4rem" }} />
+          {/* <BiLogoAudible style={{ fontSize: "4rem" }} /> */}
           {/* <Image src={logo} width={65} /> */}
+          <Image src={logo} width={50} height={50} alt="logo"/>
           <h3>{t("Exchange experiences")}</h3>
         </Link>
       </div>
